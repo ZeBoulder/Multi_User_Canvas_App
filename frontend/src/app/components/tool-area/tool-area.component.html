@@ -1,0 +1,9 @@
+<ul class="tools">
+  <li
+    *ngFor="let factory of shapeFactories"
+    (click)="selectFactory(factory)"
+    [class.marked]="factory === selectedShape"
+  >
+    {{ factory.label }}
+  </li>
+</ul>
