@@ -5,9 +5,15 @@ import { AppComponent } from './app.component';
 import { CanvasComponent } from './components/canvas/canvas.component';
 import { ToolAreaComponent } from './components/tool-area/tool-area.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
-  declarations: [AppComponent, CanvasComponent, ToolAreaComponent],
+  declarations: [
+    AppComponent,
+    CanvasComponent,
+    ToolAreaComponent,
+    NavbarComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
   providers: [],
   bootstrap: [AppComponent],

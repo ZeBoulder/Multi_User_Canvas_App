@@ -1,0 +1,34 @@
+<div class="navbar bg-base-100">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-xl text-primary" routerLink="/">
+      <fa-icon [icon]="faPaintBrush" class="mr-2 text-secondary"></fa-icon
+      >Canvas App</a
+    >
+  </div>
+  <div *ngIf="username !== ''" class="flex-1 font-serif">
+    Welcome, {{ username }}!
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1">
+      <ng-container *ngIf="!isAuthenticated; else loggedInTemplate">
+        <li *ngIf="currentRoute !== '/login'">
+          <a routerLink="/login" class="btn btn-sm btn-ghost">
+            <fa-icon [icon]="faSignInAlt" class="mr-2"> </fa-icon>Login</a
+          >
+        </li>
+        <li *ngIf="currentRoute !== '/register'">
+          <a routerLink="/register" class="btn btn-sm btn-ghost">
+            <fa-icon [icon]="faUserPlus" class="mr-2"> </fa-icon>Register</a
+          >
+        </li>
+      </ng-container>
+      <ng-template #loggedInTemplate>
+        <li>
+          <a (click)="logout()" class="btn btn-sm btn-ghost">
+            <fa-icon [icon]="faSignOutAlt" class="mr-2"> </fa-icon>Logout</a
+          >
+        </li>
+      </ng-template>
+    </ul>
+  </div>
+</div>
