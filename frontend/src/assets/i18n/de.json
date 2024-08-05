@@ -1,0 +1,15 @@
+{
+  "Navbar": {
+    "Welcome": "Willkommen",
+    "Login": "Einloggen",
+    "Logout": "Ausloggen",
+    "Register": "Registrieren"
+  },
+  "Toolbar": {
+    "Line": "Linie",
+    "Rectangle": "Rechteck",
+    "Circle": "Kreis",
+    "Triangle": "Dreieck",
+    "Select": "Auswählen"
+  }
+}

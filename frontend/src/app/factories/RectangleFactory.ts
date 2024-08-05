@@ -13,7 +13,7 @@ export class RectangleFactory
   implements ShapeFactory
 {
   constructor(shapeManager: ShapeService) {
-    super(shapeManager, 'Rechteck');
+    super(shapeManager, 'Rectangle');
   }
 
   createShape(from: Point2D, to: Point2D): Rectangle {

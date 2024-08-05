@@ -6,27 +6,31 @@
     >
   </div>
   <div *ngIf="username !== ''" class="flex-1 font-serif">
-    Welcome, {{ username }}!
+    {{ "Navbar.Welcome" | translate }}, {{ username }}!
   </div>
   <div class="flex-none">
     <app-theme-toggle></app-theme-toggle>
+    <app-lang-toggle></app-lang-toggle>
     <ul class="menu menu-horizontal px-1">
       <ng-container *ngIf="!isAuthenticated; else loggedInTemplate">
         <li *ngIf="currentRoute !== '/login'">
           <a routerLink="/login" class="btn btn-sm btn-ghost">
-            <fa-icon [icon]="faSignInAlt" class="mr-2"> </fa-icon>Login</a
+            <fa-icon [icon]="faSignInAlt" class="mr-2"> </fa-icon
+            >{{ "Navbar.Login" | translate }}</a
           >
         </li>
         <li *ngIf="currentRoute !== '/register'">
           <a routerLink="/register" class="btn btn-sm btn-ghost">
-            <fa-icon [icon]="faUserPlus" class="mr-2"> </fa-icon>Register</a
+            <fa-icon [icon]="faUserPlus" class="mr-2"> </fa-icon
+            >{{ "Navbar.Register" | translate }}</a
           >
         </li>
       </ng-container>
       <ng-template #loggedInTemplate>
         <li>
           <a (click)="logout()" class="btn btn-sm btn-ghost">
-            <fa-icon [icon]="faSignOutAlt" class="mr-2"> </fa-icon>Logout</a
+            <fa-icon [icon]="faSignOutAlt" class="mr-2"> </fa-icon
+            >{{ "Navbar.Logout" | translate }}</a
           >
         </li>
       </ng-template>

@@ -9,7 +9,7 @@ import { ShapeFactory } from '../interface/ShapeFactory';
   providedIn: 'root',
 })
 export class LineFactory extends AbstractFactory<Line> implements ShapeFactory {
-  public override label: string = 'Linie';
+  // public override label: string = 'Linie';
 
   constructor(shapeManager: ShapeService) {
     super(shapeManager, 'Line');

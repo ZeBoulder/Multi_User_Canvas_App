@@ -1,0 +1,15 @@
+{
+  "Navbar": {
+    "Welcome": "Welcome",
+    "Login": "Login",
+    "Logout": "Logout",
+    "Register": "Register"
+  },
+  "Toolbar": {
+    "Line": "Line",
+    "Rectangle": "Rectangle",
+    "Circle": "Circle",
+    "Triangle": "Triangle",
+    "Select": "Select"
+  }
+}

@@ -9,7 +9,7 @@ import { ShapeService } from '../services/shape.service';
   providedIn: 'root',
 })
 export class TriangleFactory implements ShapeFactory {
-  public label: string = 'Dreieck';
+  public label: string = 'Triangle';
 
   private from!: Point2D | undefined;
   private tmpTo!: Point2D | undefined;

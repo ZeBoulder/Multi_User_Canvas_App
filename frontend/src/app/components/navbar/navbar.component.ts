@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
+
 import {
   faPaintBrush,
   faSignInAlt,
@@ -26,6 +28,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public faSignOutAlt: IconDefinition = faSignOutAlt;
   public faUserPlus: IconDefinition = faUserPlus;
 
+  // constructor(private translate: TranslateService) {}
+
+  // ngOnInit() {
+  //   console.log('Current language:', this.translate.currentLang);
+  //   this.translate.get('Navbar.Welcome').subscribe((res) => {
+  //     console.log('Translation for "Navbar.Welcome":', res);
+  //   });
+  // }
   constructor() {}
 
   public ngOnInit(): void {
