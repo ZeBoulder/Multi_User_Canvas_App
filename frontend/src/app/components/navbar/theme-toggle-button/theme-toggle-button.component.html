@@ -1,0 +1,8 @@
+<a (click)="toggleTheme()" class="btn btn-sm btn-ghost">
+  <ng-container *ngIf="(currentTheme$ | async) === 'nord'; else moonIcon">
+    <fa-icon [icon]="faMoon"></fa-icon>
+  </ng-container>
+  <ng-template #moonIcon>
+    <fa-icon [icon]="faSun"></fa-icon>
+  </ng-template>
+</a>

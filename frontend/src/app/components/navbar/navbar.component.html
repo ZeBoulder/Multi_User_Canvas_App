@@ -9,6 +9,7 @@
     Welcome, {{ username }}!
   </div>
   <div class="flex-none">
+    <app-theme-toggle></app-theme-toggle>
     <ul class="menu menu-horizontal px-1">
       <ng-container *ngIf="!isAuthenticated; else loggedInTemplate">
         <li *ngIf="currentRoute !== '/login'">

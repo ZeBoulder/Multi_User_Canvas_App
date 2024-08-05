@@ -6,6 +6,7 @@ import { CanvasComponent } from './components/canvas/canvas.component';
 import { ToolAreaComponent } from './components/tool-area/tool-area.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ThemeToggleButtonComponent } from './components/navbar/theme-toggle-button/theme-toggle-button.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CanvasComponent,
     ToolAreaComponent,
     NavbarComponent,
+    ThemeToggleButtonComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
   providers: [],
