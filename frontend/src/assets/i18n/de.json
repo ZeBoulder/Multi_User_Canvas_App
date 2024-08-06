@@ -10,6 +10,8 @@
     "Rectangle": "Rechteck",
     "Circle": "Kreis",
     "Triangle": "Dreieck",
-    "Select": "Auswählen"
+    "Select": "Auswählen",
+    "DeleteItem": "Auswahl löschen",
+    "ClearCanvas": "Canvas leeren"
   }
 }

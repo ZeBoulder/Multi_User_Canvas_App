@@ -6,6 +6,16 @@ import { RectangleFactory } from '../../factories/RectangleFactory';
 import { TriangleFactory } from '../../factories/TriangleFactory';
 import { ShapeFactory } from '../../interface/ShapeFactory';
 import { ToolbarService } from '../../services/toolbar.service';
+import { IconDefinition, IconProp } from '@fortawesome/fontawesome-svg-core';
+import {
+  faCircle,
+  faCaretUp,
+  faEraser,
+  faMinus,
+  faSquare,
+  faTrashAlt,
+  faMousePointer,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-tool-area',
@@ -13,8 +23,16 @@ import { ToolbarService } from '../../services/toolbar.service';
   styleUrls: ['./tool-area.component.scss'],
 })
 export class ToolAreaComponent implements OnInit {
-  shapeFactories!: ShapeFactory[];
-  selectedShape: ShapeFactory | null = null;
+  public shapeFactories!: ShapeFactory[];
+  public selectedShape: ShapeFactory | null = null;
+
+  public faMinus: IconDefinition = faMinus;
+  public faSquare: IconDefinition = faSquare;
+  public faCircle: IconDefinition = faCircle;
+  public faTriangle: IconDefinition = faCaretUp;
+  public faEraser: IconDefinition = faEraser;
+  public faMousePointer: IconDefinition = faMousePointer;
+  public faTrashAlt: IconDefinition = faTrashAlt;
 
   constructor(
     private toolbarService: ToolbarService,
@@ -39,5 +57,28 @@ export class ToolAreaComponent implements OnInit {
 
   selectFactory(factory: ShapeFactory): void {
     this.toolbarService.setSelectedTool(factory);
+  }
+
+  getIcon(factory: ShapeFactory): IconProp | null {
+    if (factory.label === 'Line') return faMinus;
+    if (factory.label === 'Circle') return faCircle;
+    if (factory.label === 'Rectangle') return faSquare;
+    if (factory.label === 'Triangle') return faCaretUp;
+    if (factory.label === 'Selection') return faMousePointer;
+
+    return null;
+  }
+
+  isSelectedLabel(shapeFactory: ShapeFactory): boolean {
+    if (!this.selectedShape) return false;
+    return this.selectedShape.label === shapeFactory.label;
+  }
+
+  deleteSelection(): void {
+    // TODO: implement
+  }
+
+  clearCanvas(): void {
+    // TODO: implement
   }
 }

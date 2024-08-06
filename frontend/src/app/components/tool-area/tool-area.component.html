@@ -1,4 +1,17 @@
-<ul class="tools">
+<div class="flex justify-center mt-16 mb-4 space-x-2">
+  <button
+    *ngFor="let factory of shapeFactories"
+    (click)="selectFactory(factory)"
+    class="btn btn-sm"
+    [class.btn-primary]="isSelectedLabel(factory)"
+    [class.btn-ghost]="!isSelectedLabel(factory)"
+  >
+    <fa-icon *ngIf="getIcon(factory)" [icon]="getIcon(factory)!"></fa-icon>
+    {{ "Toolbar." + factory.label | translate }}
+  </button>
+</div>
+
+<!-- <ul class="tools">
   <li
     *ngFor="let factory of shapeFactories"
     (click)="selectFactory(factory)"
@@ -6,4 +19,4 @@
   >
     {{ "Toolbar." + factory.label | translate }}
   </li>
-</ul>
+</ul> -->
