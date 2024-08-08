@@ -94,7 +94,7 @@ export class CanvasComponent implements OnInit, AfterViewInit, OnDestroy {
 
   draw(): void {
     this.ctx.beginPath();
-    this.ctx.fillStyle = 'lightgrey';
+    this.ctx.fillStyle = 'white';
     this.ctx.fillRect(0, 0, this.width, this.height);
     this.ctx.stroke();
 
