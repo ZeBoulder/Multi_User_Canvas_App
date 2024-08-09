@@ -1,1 +1,144 @@
-<p>register works!</p>
+<div class="flex items-center justify-center min-h-full bg-base-200">
+  <div class="card w-96 bg-base-100 shadow-xl">
+    <div class="card-body">
+      <h2 class="card-title justify-center mb-4 text-primary">
+        <fa-icon [icon]="faUserPlus" class="mr-2"> </fa-icon>
+        {{ "Auth.Register" | translate }}
+      </h2>
+      <form (ngSubmit)="register()" #registerForm="ngForm">
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">{{ "Auth.Email" | translate }}</span>
+          </label>
+          <input
+            type="email"
+            [(ngModel)]="email"
+            name="email"
+            #emailInput="ngModel"
+            placeholder="{{ 'Auth.Placeholder.Email' | translate }}"
+            class="input input-bordered"
+            required
+          />
+          <label
+            class="label"
+            *ngIf="
+              emailInput.invalid && (emailInput.dirty || emailInput.touched)
+            "
+          >
+            <span class="label-text-alt text-error">{{
+              "Auth.Error.Email" | translate
+            }}</span>
+          </label>
+        </div>
+        <div class="form-control mt-4">
+          <label class="label">
+            <span class="label-text">{{ "Auth.Username" | translate }}</span>
+          </label>
+          <input
+            type="username"
+            [(ngModel)]="username"
+            name="username"
+            #usernameInput="ngModel"
+            placeholder="{{ 'Auth.Placeholder.Username' | translate }}"
+            class="input input-bordered"
+            required
+          />
+          <label
+            class="label"
+            *ngIf="
+              usernameInput.invalid &&
+              (usernameInput.dirty || usernameInput.touched)
+            "
+          >
+            <span class="label-text-alt text-error">{{
+              "Auth.Error.UsernameRequired" | translate
+            }}</span>
+          </label>
+        </div>
+        <div class="form-control mt-4">
+          <label class="label">
+            <span class="label-text">{{ "Auth.Password" | translate }}</span>
+          </label>
+          <input
+            type="password"
+            [(ngModel)]="password"
+            name="password"
+            #passwordInput="ngModel"
+            placeholder="{{ 'Auth.Placeholder.Password' | translate }}"
+            class="input input-bordered"
+            required
+            minlength="6"
+          />
+          <label
+            class="label"
+            *ngIf="
+              passwordInput.invalid &&
+              (passwordInput.dirty || passwordInput.touched)
+            "
+          >
+            <span class="label-text-alt text-error">{{
+              "Auth.Error.Password" | translate
+            }}</span>
+          </label>
+        </div>
+        <div class="form-control mt-4">
+          <label class="label">
+            <span class="label-text">{{
+              "Auth.RepeatPassword" | translate
+            }}</span>
+          </label>
+          <input
+            type="password"
+            [(ngModel)]="repeatPassword"
+            name="repeatPassword"
+            #repeatPasswordInput="ngModel"
+            placeholder="{{ 'Auth.Placeholder.RepeatPassword' | translate }}"
+            class="input input-bordered"
+            required
+          />
+          <label
+            class="label"
+            *ngIf="repeatPasswordInput.dirty && password !== repeatPassword"
+          >
+            <span class="label-text-alt text-error">{{
+              "Auth.Error.PasswordsDontMatch" | translate
+            }}</span>
+          </label>
+        </div>
+        <div class="form-control mt-6">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="!registerForm.form.valid || password !== repeatPassword"
+          >
+            <fa-icon [icon]="faUserPlus" class="mr-2"> </fa-icon>
+            {{ "Auth.Register" | translate }}
+          </button>
+        </div>
+      </form>
+      <div class="divider">{{ "Auth.Or" | translate }}</div>
+      <div class="form-control">
+        <button routerLink="/login" class="btn btn-outline">
+          <fa-icon [icon]="faSignInAlt" class="mr-2"> </fa-icon>
+          {{ "Auth.GoToLogin" | translate }}
+        </button>
+      </div>
+      <div *ngIf="errorMessage" class="alert alert-error mt-4">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="stroke-current shrink-0 h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <span>{{ errorMessage }}</span>
+      </div>
+    </div>
+  </div>
+</div>
