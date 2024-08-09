@@ -1,14 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { Subscription } from 'rxjs';
-import { TranslateService } from '@ngx-translate/core';
-
+import { filter, Subscription } from 'rxjs';
 import {
   faPaintBrush,
   faSignInAlt,
   faSignOutAlt,
   faUserPlus,
 } from '@fortawesome/free-solid-svg-icons';
+import { AuthenticationService } from '../../services/authentication.service';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -16,11 +16,11 @@ import {
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-  private _authSubscription!: Subscription;
+  private authSubscription!: Subscription;
   public isAuthenticated = false;
   public username: string = '';
 
-  private _routeSubscription!: Subscription;
+  private routeSubscription!: Subscription;
   public currentRoute: string = '';
 
   public faPaintBrush: IconDefinition = faPaintBrush;
@@ -28,25 +28,34 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public faSignOutAlt: IconDefinition = faSignOutAlt;
   public faUserPlus: IconDefinition = faUserPlus;
 
-  // constructor(private translate: TranslateService) {}
-
-  // ngOnInit() {
-  //   console.log('Current language:', this.translate.currentLang);
-  //   this.translate.get('Navbar.Welcome').subscribe((res) => {
-  //     console.log('Translation for "Navbar.Welcome":', res);
-  //   });
-  // }
-  constructor() {}
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {
+    this.routeSubscription = this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.currentRoute = this.router.url;
+      });
+  }
 
   public ngOnInit(): void {
-    // TODO: check route and auth status
+    this.authSubscription =
+      this.authenticationService.isAuthenticated$.subscribe(
+        (isAuthenticated) => {
+          this.isAuthenticated = isAuthenticated;
+          this.username = this.authenticationService.getUser()?.username || '';
+        }
+      );
   }
 
   public logout(): void {
-    // TODO: Implement logout
+    this.authenticationService.clearUser();
+    this.router.navigate(['/login']);
   }
 
   public ngOnDestroy(): void {
-    // TODO: Dont forget to unsubscribe
+    this.authSubscription?.unsubscribe();
+    this.routeSubscription?.unsubscribe();
   }
 }
