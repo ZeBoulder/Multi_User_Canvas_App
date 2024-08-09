@@ -21,6 +21,7 @@ export class WebService {
   }
 
   post<T, U>(endpoint: string, body: T, headers?: HttpHeaders): Observable<U> {
+    //T is type of body sent, and U is type of response expected
     const url = `${this.baseUrl}/${endpoint}`;
     return this.http.post<U>(url, body, { headers });
   }

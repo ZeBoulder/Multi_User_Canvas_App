@@ -13,5 +13,30 @@
     "Select": "Select",
     "DeleteItem": "Delete Selection",
     "ClearCanvas": "Clear Canvas"
+  },
+  "Auth": {
+    "Login": "Login",
+    "Register": "Register",
+    "Email": "Email",
+    "Username": "Username",
+    "Password": "Password",
+    "RepeatPassword": "Repeat Password",
+    "Or": "OR",
+    "GoToLogin": "Go to Login",
+    "GoToRegistration": "Go to Registration",
+    "Placeholder": {
+      "Email": "example@mail.com",
+      "Username": "Give yourself a Username",
+      "Password": "Enter your Password",
+      "RepeatPassword": "Repeat your Password"
+    },
+    "Error": {
+      "InvalidCredentials": "Invalid credentials.",
+      "LoginError": "An error occurred while logging in. Please try again later.",
+      "Password": "Your Password must be at least 6 characters long.",  
+      "PasswordsDontMatch": "Passwords do not match.",
+      "Email": "Please enter a valid email address.",
+      "UsernameRequired": "A Username is required."
+    }
   }
 }

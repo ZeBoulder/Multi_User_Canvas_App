@@ -12,6 +12,31 @@
     "Triangle": "Dreieck",
     "Select": "Auswählen",
     "DeleteItem": "Auswahl löschen",
-    "ClearCanvas": "Canvas leeren"
+    "ClearCanvas": "Canvas leeren" 
+  },
+    "Auth": {
+      "Login": "Einloggen",
+      "Register": "Registrieren",
+      "Email": "E-Mail",
+      "Username": "Benutzername",
+      "Password": "Passwort",
+      "RepeatPassword": "Passwort wiederholen",
+      "Or": "ODER",
+      "GoToLogin": "Zum Login",
+      "GoToRegistration": "Zur Registrierung",
+      "Placeholder": {
+        "Email": "beispiel@email.de",
+        "Username": "Gib dir einen Benutzernamen",
+        "Password": "Gib dein Passwort ein",
+        "RepeatPassword": "Bestätige dein Passwort"
+      },
+      "Error": {
+        "InvalidCredentials": "Ungültige Anmeldeinformationen.",
+        "LoginError": "Beim Einloggen ist ein Fehler aufgetreten. Bitte versuche es später erneut.",
+        "Password": "Das Passwort muss mindestens 6 Zeichen lang sein.",
+        "PasswordsDontMatch": "Die Passwörter stimmen nicht überein.",
+        "Email": "Bitte gib eine gültige E-Mail-Adresse ein.",
+        "UsernameRequired": "Ein Benutzername ist erforderlich."
+      }
   }
 }

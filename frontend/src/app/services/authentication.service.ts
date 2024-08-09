@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, of, tap } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { User } from '../model/User';
 import { Router } from '@angular/router';
@@ -37,12 +37,29 @@ export class AuthenticationService {
     this._isAuthenticatedSubject.next(false);
   }
 
-  public isAuthenticated(): boolean {
-    return !!this._currentUser;
+  public isAuthenticated(): Observable<boolean> {
+    if (this._currentUser) {
+      return of(true);
+    } else {
+      const token = localStorage.getItem('jwtToken');
+      if (token) {
+        return this.validateToken(token);
+      } else {
+        return of(false);
+      }
+    }
   }
 
   public get isAuthenticated$(): Observable<boolean> {
     return this._isAuthenticatedSubject.asObservable();
+  }
+
+  public initializeAuthentication(): Observable<boolean> {
+    return this.isAuthenticated().pipe(
+      tap((isAuthenticated) =>
+        this._isAuthenticatedSubject.next(isAuthenticated)
+      )
+    );
   }
 
   public login(email: string, password: string): Observable<LoginResponseDTO> {
@@ -76,13 +93,15 @@ export class AuthenticationService {
         map((response) => {
           if (response.valid && response.username) {
             this.setUser(response.username, token);
+          } else {
+            this.clearUser();
           }
           return response.valid;
         }),
         catchError((error) => {
           console.error('Token validation error:', error);
           this.clearUser();
-          this._router.navigate(['/login']);
+          // this._router.navigate(['/login']);
           return of(false);
         })
       );
